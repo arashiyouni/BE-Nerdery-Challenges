@@ -19,6 +19,38 @@ findMajorityElement([1, 2, 3, 4, 5]); // Expected output: null
 
 */
 
-const findMajorityElement = (arr) => {};
+const findMajorityElement = (arr) => {
+  const long = arr.length;
 
+  if (arr.length === 1) return arr[0];
+
+  if (!arr.length) return null;
+
+  for (let i = 0; i < long; i++) {
+    let count = 0;
+    for (let l = 0; l < long; l++) {
+      if (arr[i] === arr[l]) {
+        count++;
+      }
+    }
+    if (count > long / 2) {
+      return arr[i];
+    }
+  }
+  return null;
+};
+// const r = findMajorityElement([1, 2, 3, 4]);
+// console.log(r); //null
+
+// const r2 = findMajorityElement([1]);
+// console.log(r2); //1
+
+const r3 = findMajorityElement([1, 2, 2, 2, 3]);
+console.log(r3); //null
+
+// const r4 = findMajorityElement([1, 2, 2, 3, 3, 3]);
+// console.log(r4); //null
+
+const r5 = findMajorityElement([1, 2, 3, 1, 1]);
+console.log(r5); //1
 module.exports = findMajorityElement;

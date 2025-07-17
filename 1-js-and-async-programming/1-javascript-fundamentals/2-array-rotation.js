@@ -15,8 +15,26 @@ Example:
 rotateArray([1, 2, 3, 4, 5], 2); // Expected output: [3, 4, 5, 1, 2]
 rotateArray([1, 2, 3, 4, 5], 7); // Expected output: [3, 4, 5, 1, 2]
 
+
 */
 
-const rotateArray = (arr, n) => {};
+const rotateArray = (arr, n) => {
+  //ref (Modular Addition): https://www.geeksforgeeks.org/engineering-mathematics/modular-arithmetic/
+  const nRotation = n;
+  const len = arr.length;
+  let newArr = [];
 
+  const totalRotationPerElement = ((nRotation % len) + len) % len;
+  const rotationA = arr.slice(totalRotationPerElement); //first part of clock rotate
+  const rotationB = arr.slice(0, totalRotationPerElement); //second part of clock rotate
+
+  // for (let i = 0; i < len; i++) {
+  //(i - rotateBy + len) % len
+  //   const mod = (( i- nRotation +len) + len) % len; //position where value arr[i] should be in newArr
+  //   newArr[mod] = arr[i];
+  // }
+  return newArr.concat(rotationA, rotationB);
+};
+// const r = rotateArray([1, 2, 3, 4, 5], 7); //output: [3, 4, 5, 1, 2]
+// console.log(r);
 module.exports = rotateArray;

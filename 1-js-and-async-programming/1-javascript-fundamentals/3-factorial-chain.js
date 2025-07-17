@@ -31,6 +31,31 @@ Requirements:
 
 */
 
-const factorialChain = (number, lastDigits) => {};
+const factorialChain = (number, lastDigits) => {
+  let totalFactorial = 1;
+  let totalSumFactorial = 1;
+  for (let i = 2; i <= number; i++) {
+    //5! = 5 * 4 * 3 * 2 * 1 = 120
+    totalFactorial *= i;
+    totalSumFactorial += totalFactorial;
+  }
 
+  const converToString = String(totalSumFactorial);
+
+  if (converToString.length < lastDigits) {
+    const zeros = "0".repeat(lastDigits - Number(converToString.length));
+    return `${zeros}${converToString}`;
+  } else if (converToString.length === String(lastDigits)) {
+    return converToString;
+  } else {
+    return converToString.slice(-lastDigits);
+  }
+};
+
+// const r = factorialChain(5, 3);
+// console.log(r);
+// const r2 = factorialChain(3, 5);
+// console.log(r2);
+const r3 = factorialChain(5, 1);
+console.log(r3);
 module.exports = factorialChain;

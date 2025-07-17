@@ -30,7 +30,29 @@ Requirements:
 - Only count palindromes with length greater than or equal to the specified minLength.
 - Return the count as a number.
 */
+const isPolindrome = (word) => {
+  const cleanedWord = word.toLowerCase().replace(/[^a-z0-9]/g, "");
+  const reversedWord = cleanedWord.split("").reverse().join("");
+  return cleanedWord === reversedWord;
+};
 
-const palindromeCounter = (text, minLength) => {};
+const palindromeCounter = (text, minLength) => {
+  const phrase = text.split(" ");
+  let count = 0;
 
+  phrase.forEach((words) => {
+    if (isPolindrome(words) && words.length >= minLength) {
+      count += 1;
+    }
+  });
+  return count;
+};
+// const p = palindromeCounter("level radar mom", 3); //3
+// console.log(p);
+// const p2 = palindromeCounter("hello world", 3); //0
+// console.log(p2);
+// const p3 = palindromeCounter("abc def", 2); //0
+// console.log(p3);
+// const p4 = palindromeCounter("Madam level Civic noon", 5); //3
+// console.log(p4);
 module.exports = palindromeCounter;
